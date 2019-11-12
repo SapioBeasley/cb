@@ -24,14 +24,14 @@ class App {
     };
 
     private mountDb = async () => {
-        const {DB_USERNAME, DB_PASSWORD} = process.env;
+        const {DB_USERNAME, DB_PASSWORD, DB_HOST} = process.env;
 
-        if (!DB_PASSWORD && !DB_USERNAME) {
+        if (!DB_PASSWORD && !DB_USERNAME && !DB_HOST) {
             return console.log('DB creds not set');
         }
 
         await connect(
-            `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0-d8tan.mongodb.net/test?retryWrites=true&w=majority`,
+            `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}?retryWrites=true&w=majority`,
             {useNewUrlParser: true, useUnifiedTopology: true}
         );
     };
