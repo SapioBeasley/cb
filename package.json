@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "cb lol",
   "main": "index.js",
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100,
+    "semi": true,
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.7.9",
-    "request-promise": "^4.2.5",
-    "typescript": "^3.7.2"
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
@@ -19,7 +26,11 @@
     "prettier": "^1.18.2",
     "pretty-quick": "^2.0.1",
     "tslint": "^5.20.1",
-    "tslint-eslint-rules": "^5.4.0"
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-jasmine-rules": "^1.6.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.7.2"
   },
   "husky": {
     "hooks": {
@@ -27,7 +38,7 @@
     }
   },
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix pretty-quick",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
