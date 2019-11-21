@@ -1,7 +1,7 @@
+import { Networks } from '../enums/networks.enums';
 import { ICommunication } from './communication.interface';
 import { ICustomer } from './customer.interface';
 import { IDispute } from './dispute.interface';
-import {Dispute} from './dispute.type';
 import { IPayment } from './payment.interface';
 import { IRebuttal } from './rebuttal.interface';
 import { IShipment } from './shipment.interface';
@@ -16,24 +16,31 @@ export class Evidence {
 
   constructor(dispute: IDispute) {
     this.customer = {
-      email: '',
       firstName: '',
-      ip: '',
       lastName: '',
-      phone: ''
+      ip: '',
+      phone: '',
+      email: ''
     };
     this.payment = {
-      avs: {
-        billingAddress: {
-          line1: '',
-          line2: '',
-          city: '',
-          state: '',
-          zip: '',
-        }
+      billingAddress: {
+        line1: '',
+        line2: '',
+        city: '',
+        state: '',
+        zip: '',
       },
-      cvc: '',
-      exp: '',
+      brand: '',
+      checks: {
+        addressLine1Check: '',
+        addressZipCheck: '',
+        cvcCheck: ''
+      },
+      country: '',
+      expMonth: 0,
+      expYear: 0,
+      funding: '',
+      network: Networks.unknown,
       last4: ''
     };
     this.rebuttal = {
@@ -55,6 +62,8 @@ export class Evidence {
       sms: [],
       phone: [],
     };
-    this.dispute = new Dispute(dispute);
+    this.dispute = dispute;
   }
+
+  public init = () => {};
 }
